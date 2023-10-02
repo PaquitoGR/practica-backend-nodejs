@@ -4,6 +4,14 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+require('./lib/connectMongoose');
+
+// model test
+const Ad = require('./models/Ad');
+Ad.find().then((results) => {
+  console.log(results);
+}).catch(err => console.log(err));
+
 var app = express();
 
 // view engine setup
@@ -16,13 +24,12 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', require('./routes/index'));
-app.use('/users', require('./routes/users'));
+// API routes
+app.use('/api/ads', require('./routes/apiv1/ads'));
 
-// PRUEBA
-app.get('/prueba', (req, res, next) => {
-  res.send('Esto es una prueba');
-});
+// Website routes
+app.use('/', require('./routes/index'));
+// app.use('/users', require('./routes/users'));
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

@@ -24,7 +24,7 @@ async function main () {
   await new Promise(resolve => connection.once('open', resolve));
 
   const del = await deleteQuestion(
-    'Are you sure to delete the data base and load initial data? (y/n)'
+    'Are you sure you want to delete the database and load initial data? (y/n)'
   );
 
   if (!del) {
@@ -43,5 +43,5 @@ async function initAds () {
 
   // create initial data
   const inserted = await Ad.insertMany(initData.ads);
-  console.log(`${inserted.lenght} ads created.`);
+  console.log(`${inserted.length} ads created.`);
 };
