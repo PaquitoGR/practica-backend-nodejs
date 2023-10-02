@@ -1,9 +1,9 @@
 {
   "ads": [
-    { "name": "book", "adType": true, "price": 10, "img": "", "tags": ["lifestile"] },
-    { "name": "console", "adType": true, "price": 450, "img": "", "tags": ["lifestile", "mobile"] },
+    { "name": "book", "adType": true, "price": 10, "img": "", "tags": ["lifestyle"] },
+    { "name": "console", "adType": true, "price": 450, "img": "", "tags": ["lifestyle", "mobile"] },
     { "name": "car", "adType": false, "price": 5000, "img": "", "tags": ["motor"] },
-    { "name": "toy", "adType": true, "price": 30, "img": "", "tags": ["lifestile"] },
-    { "name": "iphone", "adType": false, "price": 209, "img": "", "tags": ["work", "mobile"] },
+    { "name": "toy", "adType": true, "price": 30, "img": "", "tags": ["lifestyle"] },
+    { "name": "iphone", "adType": false, "price": 209, "img": "", "tags": ["work", "mobile"] }
   ]
 }

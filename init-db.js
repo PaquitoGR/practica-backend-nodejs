@@ -28,6 +28,7 @@ async function main () {
   );
 
   if (!del) {
+    console.log('Nothing was modified.');
     process.exit();
   }
 
