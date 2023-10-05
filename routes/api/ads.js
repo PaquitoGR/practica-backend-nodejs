@@ -2,27 +2,29 @@ const express = require('express');
 const Ad = require('../../models/Ad');
 const router = express.Router();
 
-// GET /apiv1/ads search all
+// GET /api/ads search all
 router.get('/', async (req, res, next) => {
   try {
     // filter by name
-    // http://127.0.0.1:3000/apiv1/ads?name=book
+    // http://127.0.0.1:3000/api/ads?name=book
     const filterByName = req.query.name;
     // filter by ad type: true = sale, false = search
-    // http://127.0.0.1:3000/apiv1/ads?sale=true
+    // http://127.0.0.1:3000/api/ads?sale=true
     const filterByAdType = req.query.sale;
     // filter by tags
-    // http://127.0.0.1:3000/apiv1/ads?tags=lifestyle
+    // http://127.0.0.1:3000/api/ads?tags=lifestyle
     const filterByTags = req.query.tags;
+    // filter by price
+    const filterByPrice = req.query.price;
     // pagination
-    // http://127.0.0.1:3000/apiv1/ads?skip=2&limit=3
+    // http://127.0.0.1:3000/api/ads?skip=2&limit=3
     const skip = req.query.skip;
     const limit = req.query.limit;
     // sort
-    // http://127.0.0.1:3000/apiv1/ads?sort=-name (- for descent)
+    // http://127.0.0.1:3000/api/ads?sort=-name (- for descent)
     const sort = req.query.sort;
     // fields
-    // http://127.0.0.1:3000/apiv1/ads?fields=name -_id (- for descent)
+    // http://127.0.0.1:3000/api/ads?fields=name -_id (- for descent)
     const fields = req.query.fields;
 
     const filter = {};
@@ -39,6 +41,10 @@ router.get('/', async (req, res, next) => {
       filter.tags = filterByTags;
     }
 
+    if (filterByPrice) {
+      filter.price = filterByPrice;
+    }
+
     const ads = await Ad.list(filter, skip, limit, sort, fields);
     res.json({ results: ads });
   } catch (err) {
@@ -46,9 +52,7 @@ router.get('/', async (req, res, next) => {
   }
 });
 
-// GET /apiv2/images
-
-// GET /apiv1/ads/(_id) search by id
+// GET /api/ads/(_id) search by id
 router.get('/:id', async (req, res, next) => {
   try {
     const id = req.params.id;
@@ -59,22 +63,20 @@ router.get('/:id', async (req, res, next) => {
   }
 });
 
-// PUT /apiv1/ads/(_id) Update ad
+// PUT /api/ads/(_id) Update ad
 router.put('/:id', async (req, res, next) => {
   try {
     const id = req.params.id;
-    const ad = await Ad.findById(id);
-    if (ad.sale) {
-      const data = req.body;
-      const updateAd = await Ad.findByIdAndUpdate(id, data, { new: true }); // new true: returns updated ad
-      res.json({ results: updateAd });
-    }
+    // const ad = await Ad.findById(id);
+    const data = req.body;
+    const updateAd = await Ad.findByIdAndUpdate(id, data, { new: true }); // new true: returns updated ad
+    res.json({ results: updateAd });
   } catch (err) {
     next(err);
   }
 });
 
-// POST /apiv1/ads create ad
+// POST /api/ads create ad
 router.post('/', async (req, res, next) => {
   try {
     const adData = req.body;
@@ -89,14 +91,14 @@ router.post('/', async (req, res, next) => {
   }
 });
 
-// DELETE /apiv1/ads(_id) delete an ad
+// DELETE /api/ads(_id) delete an ad
 router.delete('/:id', async (req, res, next) => {
   try {
     const id = req.params.id;
 
     await Ad.deleteOne({ _id: id });
 
-    res.json();
+    res.json({ msg: 'item succesfully deleted' });
   } catch (err) {
     next(err);
   }

@@ -1,18 +1,12 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
 
 require('./lib/connectMongoose');
 
-// model test
-// const Ad = require('./models/Ad');
-// Ad.find().then((results) => {
-//   console.log(results);
-// }).catch(err => console.log(err));
-
-var app = express();
+const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -25,7 +19,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // API routes
-app.use('/apiv1/ads', require('./routes/apiv1/ads'));
+app.use('/api/ads', require('./routes/api/ads'));
 
 // Website routes
 app.use('/', require('./routes/index'));
