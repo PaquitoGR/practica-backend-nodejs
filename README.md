@@ -1,7 +1,5 @@
-# KeePop
-## The ultimate buy-sell network
-
-API application
+# KeePoP
+### Buy-sell network API application
 
 ### Install
 

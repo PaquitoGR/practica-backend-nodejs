@@ -5,7 +5,40 @@ const router = express.Router();
 // GET /apiv1/ads search all
 router.get('/', async (req, res, next) => {
   try {
-    const ads = await Ad.find();
+    // filter by name
+    // http://127.0.0.1:3000/apiv1/ads?name=book
+    const filterByName = req.query.name;
+    // filter by ad type: true = sale, false = search
+    // http://127.0.0.1:3000/apiv1/ads?sale=true
+    const filterByAdType = req.query.sale;
+    // filter by tags
+    // http://127.0.0.1:3000/apiv1/ads?tags=lifestyle
+    const filterByTags = req.query.tags;
+    // pagination
+    // http://127.0.0.1:3000/apiv1/ads?skip=2&limit=3
+    const skip = req.query.skip;
+    const limit = req.query.limit;
+    // sort
+    // http://127.0.0.1:3000/apiv1/ads?sort=-name (- for descent)
+    const sort = req.query.sort;
+    // fields
+    const fields = req.query.fields;
+
+    const filter = {};
+
+    if (filterByName) {
+      filter.name = filterByName;
+    };
+
+    if (filterByAdType) {
+      filter.sale = filterByAdType;
+    };
+
+    if (filterByTags) {
+      filter.tags = filterByTags;
+    }
+
+    const ads = await Ad.list(filter, skip, limit, sort, fields);
     res.json({ results: ads });
   } catch (err) {
     next(err);
