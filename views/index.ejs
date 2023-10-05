@@ -7,10 +7,65 @@
   <body>
     <h1><%= title %></h1>
     <p>Welcome to <%= title %>, the ultimate buy/sell network!</p>
-    <h2>All products:</h2>
-
-    <%= %>
-    <%= %>
-    <%= %>
+    <h2>Item Search:</h2>
+    <form method="post" action="http://127.0.0.1:3000/api/ads">
+      <div>
+        <label for="name">Name</label>
+        <input id="name" type="text" width="10" placeholder="Item's name" name="name">
+        <label for="price">Price</label>
+        <input id="price" type="number" width="10px" min="0" name="price">
+      </div>
+      <div>
+        <label for="image">Image</label>
+        <button style="display:block;width:120px; height:20px;" onclick="document.getElementById('getFile').click()">Select image file</button>
+        <input type="file" id="getFile" style="display: none" accept="image/png, image/jpeg, image/jpg" required>
+      </div>
+      <div>
+        <label>Ad type</label>
+        <div>
+          <label for="sale">Sale</label>
+          <input type="radio" class="radio" name="adType" checked value="sale">
+          <label for="purchase">Purchase</label>
+          <input type="radio" class="radio" name="adType" value="purchase">
+          <label for="purchase">Both</label>
+          <input type="radio" class="radio" name="adType" value="both">
+        </div>
+      </div>      
+      <div>
+        <label>Tags</label>
+        <div>
+          <input type="checkbox" name="work" id="work">
+          <label for="work">Work</label>
+          <input type="checkbox" name="lifestyle" id="lifestyle">
+          <label for="lifestyle">Lifstyle</label>
+          <input type="checkbox" name="motor" id="motor">
+          <label for="motor">Motor</label>
+          <input type="checkbox" name="mobile" id="mobile">
+          <label for="mobile">Mobile</label>
+        </div>
+      </div>
+      <div>
+        <button class="btn" type="submit">Search</button>
+        <button class="btn" type="reset">Reset</button>
+      </div>
+    </form>
+    <table>
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Price</th>
+          <th>Tags</th>
+          <th>Image</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Name</td>
+          <td>Price</td>
+          <td>Tags</td>
+          <td>Image</td>
+        </tr>
+      </tbody>
+    </table>
   </body>
 </html>

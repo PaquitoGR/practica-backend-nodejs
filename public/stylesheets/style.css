@@ -3,8 +3,29 @@ body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   color: #00B7FF;
+  line-height: 1.5;
+  
 }
 
 a {
   color: #00B7FF;
+}
+
+table, td {
+  border: 1px solid #878787;
+}
+
+thead, tfoot {
+  background-color: #333;
+  color: #fff;
+}
+
+div {
+  margin: 20px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
