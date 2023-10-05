@@ -1,9 +1,11 @@
 {
   "ads": [
-    { "name": "book", "adType": true, "price": 10, "img": "./public/images/ads/keepop-book.jpg", "tags": ["lifestyle"] },
-    { "name": "console", "adType": true, "price": 450, "img": "./public/images/ads/keepop-console.jpg", "tags": ["lifestyle", "mobile"] },
-    { "name": "car", "adType": false, "price": 5000, "img": "./public/images/ads/keepop-car.jpg", "tags": ["motor"] },
-    { "name": "toy", "adType": true, "price": 30, "img": "./public/images/ads/keepop-toy.jpg", "tags": ["lifestyle"] },
-    { "name": "iphone", "adType": false, "price": 209, "img": "./public/images/ads/keepop-iphone.jpg", "tags": ["work", "mobile"] }
+    { "name": "book", "sale": true, "price": 10, "img": "./public/images/ads/keepop-book.jpg", "tags": ["lifestyle"] },
+    { "name": "console", "sale": true, "price": 450, "img": "./public/images/ads/keepop-console.jpg", "tags": ["lifestyle", "mobile"] },
+    { "name": "Tesla Model 3", "sale": false, "price": 35000, "img": "./public/images/ads/keepop-car.jpg", "tags": ["motor"] },
+    { "name": "toy", "sale": true, "price": 30, "img": "./public/images/ads/keepop-toy.jpg", "tags": ["lifestyle"] },
+    { "name": "iphone", "sale": false, "price": 209, "img": "./public/images/ads/keepop-iphone.jpg", "tags": ["work", "mobile"] },
+    { "name": "laptop", "sale": false, "price": 750, "tags": ["work"] },
+    { "name": "bicicle", "sale": false, "price": 230.15, "tags": ["lifestyle"] }
   ]
 }

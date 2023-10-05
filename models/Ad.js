@@ -5,7 +5,9 @@ const adSchema = mongoose.Schema({
   sale: { type: Boolean, default: true },
   price: { type: Number, index: true, min: 0, max: 1000000, required: true },
   img: { type: String, default: 'Picture not defined' },
-  tags: { type: [String], index: true, enum: ['work', 'lifestyle', 'motor', 'mobile'] }
+  tags: { type: [String], enum: ['work', 'lifestyle', 'motor', 'mobile'] }
+}, {
+  collection: 'ads'
 });
 
 adSchema.statics.list = function (filtro, skip, limit, sort, fields) {

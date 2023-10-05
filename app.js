@@ -7,10 +7,10 @@ var logger = require('morgan');
 require('./lib/connectMongoose');
 
 // model test
-const Ad = require('./models/Ad');
-Ad.find().then((results) => {
-  console.log(results);
-}).catch(err => console.log(err));
+// const Ad = require('./models/Ad');
+// Ad.find().then((results) => {
+//   console.log(results);
+// }).catch(err => console.log(err));
 
 var app = express();
 
@@ -25,7 +25,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // API routes
-app.use('/api/ads', require('./routes/apiv1/ads'));
+app.use('/apiv1/ads', require('./routes/apiv1/ads'));
 
 // Website routes
 app.use('/', require('./routes/index'));
