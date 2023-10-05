@@ -5,8 +5,8 @@
     { "name": "tesla model 3", "true": false, "price": 35000, "img": "./public/images/ads/keepop-car.jpg", "tags": ["motor"] },
     { "name": "toy", "sale": true, "price": 30, "img": "./public/images/ads/keepop-toy.jpg", "tags": ["lifestyle"] },
     { "name": "iphone", "sale": true, "price": 209, "img": "./public/images/ads/keepop-iphone.jpg", "tags": ["work", "mobile"] },
-    { "name": "laptop", "sale": false, "price": 750, "tags": ["work"] },
-    { "name": "bicicle", "sale": false, "price": 230.15, "tags": ["lifestyle"] },
-    { "name": "skate", "sale": false, "price": 65.90, "tags": ["lifestyle", "work"] }
+    { "name": "laptop", "sale": false, "price": 750, "img": "./public/images/ads/keepop-laptop.jpg", "tags": ["work"] },
+    { "name": "bicycle", "sale": false, "price": 230.15, "img": "./public/images/ads/keepop-bicycle.jpg", "tags": ["lifestyle"] },
+    { "name": "skate", "sale": false, "price": 65.90, "img": "./public/images/ads/keepop-skate.jpg", "tags": ["lifestyle", "work"] }
   ]
 }

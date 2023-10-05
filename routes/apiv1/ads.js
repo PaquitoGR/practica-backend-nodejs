@@ -22,6 +22,7 @@ router.get('/', async (req, res, next) => {
     // http://127.0.0.1:3000/apiv1/ads?sort=-name (- for descent)
     const sort = req.query.sort;
     // fields
+    // http://127.0.0.1:3000/apiv1/ads?fields=name -_id (- for descent)
     const fields = req.query.fields;
 
     const filter = {};
@@ -44,6 +45,8 @@ router.get('/', async (req, res, next) => {
     next(err);
   }
 });
+
+// GET /apiv2/images
 
 // GET /apiv1/ads/(_id) search by id
 router.get('/:id', async (req, res, next) => {
