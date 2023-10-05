@@ -8,7 +8,7 @@
     <h1><%= title %></h1>
     <p>Welcome to <%= title %>, the ultimate buy/sell network!</p>
     <h2>Item Search:</h2>
-    <form method="post" action="http://127.0.0.1:3000/api/ads">
+    <form method="get" action="http://127.0.0.1:3000/api/ads">
       <div>
         <label for="name">Name</label>
         <input id="name" type="text" width="10" placeholder="Item's name" name="name">
@@ -16,9 +16,9 @@
         <input id="price" type="number" width="10px" min="0" name="price">
       </div>
       <div>
-        <label for="image">Image</label>
-        <button style="display:block;width:120px; height:20px;" onclick="document.getElementById('getFile').click()">Select image file</button>
-        <input type="file" id="getFile" style="display: none" accept="image/png, image/jpeg, image/jpg" required>
+        <label for="img">Image</label>
+        <button style="display:block;width:120px; height:20px;" onclick="document.getElementById('img').click()">Select image file</button>
+        <input type="file" id="img" style="display: none" accept="image/png, image/jpeg, image/jpg">
       </div>
       <div>
         <label>Ad type</label>
@@ -33,15 +33,15 @@
       </div>      
       <div>
         <label>Tags</label>
-        <div>
-          <input type="checkbox" name="work" id="work">
+        <div >
           <label for="work">Work</label>
-          <input type="checkbox" name="lifestyle" id="lifestyle">
+          <input type="checkbox" name="tags" value="work">
           <label for="lifestyle">Lifstyle</label>
-          <input type="checkbox" name="motor" id="motor">
+          <input type="checkbox" name="tags" value="lifestyle">
           <label for="motor">Motor</label>
-          <input type="checkbox" name="mobile" id="mobile">
+          <input type="checkbox" name="tags" value="motor">
           <label for="mobile">Mobile</label>
+          <input type="checkbox" name="tags" value="mobile">
         </div>
       </div>
       <div>

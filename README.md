@@ -64,3 +64,9 @@ GET /api/ads
     }
 }
 ```
+
+#### Images
+
+```http
+GET api/images/fileName
+```
