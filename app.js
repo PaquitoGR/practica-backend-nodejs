@@ -17,10 +17,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+// image server 
+app.use('/api/images', express.static(path.join(__dirname, './public/images/ads')));
 
 // API routes
 app.use('/api/ads', require('./routes/api/ads'));
-app.use('/api/images', require('./routes/api/images'));
 // Website routes
 app.use('/', require('./routes/index'));
 
