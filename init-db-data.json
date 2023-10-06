@@ -1,12 +1,12 @@
 {
   "ads": [
-    { "name": "book", "sale": true, "price": 10, "img": "./public/images/ads/keepop-book.jpg", "tags": ["lifestyle"] },
-    { "name": "console", "sale": true, "price": 450, "img": "./public/images/ads/keepop-console.jpg", "tags": ["lifestyle", "mobile"] },
-    { "name": "tesla model 3", "true": false, "price": 35000, "img": "./public/images/ads/keepop-car.jpg", "tags": ["motor"] },
-    { "name": "toy", "sale": true, "price": 30, "img": "./public/images/ads/keepop-toy.jpg", "tags": ["lifestyle"] },
-    { "name": "iphone", "sale": true, "price": 209, "img": "./public/images/ads/keepop-iphone.jpg", "tags": ["work", "mobile"] },
-    { "name": "laptop", "sale": false, "price": 750, "img": "./public/images/ads/keepop-laptop.jpg", "tags": ["work"] },
-    { "name": "bicycle", "sale": false, "price": 230.15, "img": "./public/images/ads/keepop-bicycle.jpg", "tags": ["lifestyle"] },
-    { "name": "skate", "sale": false, "price": 65.90, "img": "./public/images/ads/keepop-skate.jpg", "tags": ["lifestyle", "work"] }
+    { "name": "book", "sale": true, "price": 10, "img": "/images/ads/keepop-book.jpg", "tags": ["lifestyle"] },
+    { "name": "console", "sale": true, "price": 450, "img": "/images/ads/keepop-console.jpg", "tags": ["lifestyle", "mobile"] },
+    { "name": "tesla model 3", "true": false, "price": 35000, "img": "/images/ads/keepop-car.jpg", "tags": ["motor"] },
+    { "name": "toy", "sale": true, "price": 30, "img": "/images/ads/keepop-toy.jpg", "tags": ["lifestyle"] },
+    { "name": "iphone", "sale": true, "price": 209, "img": "/images/ads/keepop-iphone.jpg", "tags": ["work", "mobile"] },
+    { "name": "laptop", "sale": false, "price": 750, "img": "/images/ads/keepop-laptop.jpg", "tags": ["work"] },
+    { "name": "bicycle", "sale": false, "price": 230.15, "img": "/images/ads/keepop-bicycle.jpg", "tags": ["lifestyle"] },
+    { "name": "skate", "sale": false, "price": 65.90, "img": "/images/ads/keepop-skate.jpg", "tags": ["lifestyle", "work"] }
   ]
 }

@@ -8,7 +8,7 @@
     <h1><%= title %></h1>
     <p>Welcome to <%= title %>, the ultimate buy/sell network!</p>
     <h2>Item Search:</h2>
-    <form method="get" action="http://127.0.0.1:3000/api/ads">
+    <!-- <form method="get" action="http://127.0.0.1:3000/api/ads">
       <div>
         <label for="name">Name</label>
         <input id="name" type="text" width="10" placeholder="Item's name" name="name">
@@ -48,23 +48,32 @@
         <button class="btn" type="submit">Search</button>
         <button class="btn" type="reset">Reset</button>
       </div>
-    </form>
+    </form> -->
     <table>
       <thead>
         <tr>
           <th>Item</th>
           <th>Price</th>
+          <th>Ad Type</th>
           <th>Tags</th>
           <th>Image</th>
         </tr>
       </thead>
       <tbody>
+        <% ads.forEach(ad => { %>
         <tr>
-          <td>Name</td>
-          <td>Price</td>
-          <td>Tags</td>
-          <td>Image</td>
+          <td><%= ad.name %></td>
+          <td><%= ad.price %></td>              
+          <% if (ad.sale) { %>
+            <td>sale</td>
+          <% } else { %>
+            <td>purchase</td>
+          <% } %>
+          </td>
+          <td><%= ad.tags %></td>
+          <td><img class="thumbnail" src="<%= ad.img %>"></td>
         </tr>
+        <% }) %>
       </tbody>
     </table>
   </body>

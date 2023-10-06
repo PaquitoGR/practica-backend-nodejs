@@ -12,13 +12,15 @@ const app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+// middlewares
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-// image server 
-app.use('/api/images', express.static(path.join(__dirname, './public/images/ads')));
+
+// image file server GET /images/ads/filename
+app.use('/images/ads', express.static(path.join(__dirname, './public/images/ads')));
 
 // API routes
 app.use('/api/ads', require('./routes/api/ads'));
