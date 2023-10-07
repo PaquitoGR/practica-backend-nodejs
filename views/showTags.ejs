@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>KeePoP</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>KeePoP</h1>
+    <h2>Possible Tags:</h2>
+    <p>
+      <% enumTags.forEach((tag, index) => {       
+          if (index === enumTags.length - 1) { %>
+        <%= tag %>.
+      <% } else { %>
+        <%= tag %>,
+      <% }}); %>
+      </p>       
+  </body>
+</html>

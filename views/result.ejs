@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>KeePoP</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>KeePoP</h1>
+    <h2>Item Search:</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Price</th>
+          <th>Ad Type</th>
+          <th>Tags</th>
+          <th>Image</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% ads.forEach(ad => { %>
+        <tr>
+          <td><%= ad.name %></td>
+          <td><%= ad.price %></td>              
+          <%if (ad.sale) { %>
+            <td>sale</td>
+          <% } else { %>
+            <td>purchase</td>
+          <% } %>
+          </td>
+          <td><%= ad.tags %></td>
+          <td><img class="thumbnail" src="<%= ad.img %>"></td>
+        </tr>
+        <%  }); %>
+      </tbody>
+      
+  </body>
+</html>

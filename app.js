@@ -24,6 +24,9 @@ app.use('/images/ads', express.static(path.join(__dirname, './public/images/ads'
 
 // API routes
 app.use('/api/ads', require('./routes/api/ads'));
+// GET possible tags
+app.use('/api/tags', require('./routes/api/tags'));
+
 // Website routes
 app.use('/', require('./routes/index'));
 

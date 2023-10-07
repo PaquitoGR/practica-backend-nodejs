@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %>, the ultimate buy/sell network!</p>
+    <h2>Item Search:</h2>
+    <!-- <form method="get" action="http://127.0.0.1:3000/api/ads">
+      <div>
+        <label for="name">Name</label>
+        <input id="name" type="text" width="10" placeholder="Item's name" name="name">
+        <label for="price">Price</label>
+        <input id="price" type="number" width="10px" min="0" name="price">
+      </div>
+      <div>
+        <label for="img">Image</label>
+        <button style="display:block;width:120px; height:20px;" onclick="document.getElementById('img').click()">Select image file</button>
+        <input type="file" id="img" style="display: none" accept="image/png, image/jpeg, image/jpg">
+      </div>
+      <div>
+        <label>Ad type</label>
+        <div>
+          <label for="sale">Sale</label>
+          <input type="radio" class="radio" name="adType" checked value="sale">
+          <label for="purchase">Purchase</label>
+          <input type="radio" class="radio" name="adType" value="purchase">
+          <label for="purchase">Both</label>
+          <input type="radio" class="radio" name="adType" value="both">
+        </div>
+      </div>      
+      <div>
+        <label>Tags</label>
+        <div >
+          <label for="work">Work</label>
+          <input type="checkbox" name="tags" value="work">
+          <label for="lifestyle">Lifstyle</label>
+          <input type="checkbox" name="tags" value="lifestyle">
+          <label for="motor">Motor</label>
+          <input type="checkbox" name="tags" value="motor">
+          <label for="mobile">Mobile</label>
+          <input type="checkbox" name="tags" value="mobile">
+        </div>
+      </div>
+      <div>
+        <button class="btn" type="submit">Search</button>
+        <button class="btn" type="reset">Reset</button>
+      </div>
+    </form> -->
+    <table>
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Price</th>
+          <th>Ad Type</th>
+          <th>Tags</th>
+          <th>Image</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% ads.forEach(ad => { %>
+        <tr>
+          <td><%= ad.name %></td>
+          <td><%= ad.price %></td>              
+          <% if (ad.sale) { %>
+            <td>sale</td>
+          <% } else { %>
+            <td>purchase</td>
+          <% } %>
+          </td>
+          <td><%= ad.tags %></td>
+          <td><img class="thumbnail" src="<%= ad.img %>"></td>
+        </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </body>
+</html>

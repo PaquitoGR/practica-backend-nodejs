@@ -43,7 +43,7 @@ exports.getAllAds = async (req, res, next) => {
     }
 
     const ads = await Ad.list(filter, skip, limit, sort, fields);
-    res.json({ results: ads });
+    res.render('result', { ads });
   } catch (err) {
     next(err);
   }
@@ -53,7 +53,8 @@ exports.getAdById = async (req, res, next) => {
   try {
     const id = req.params.id;
     const ad = await Ad.findById(id);
-    res.json({ results: ad });
+    res.render('resultSingle', { ad });
+    console.log({ ad });
   } catch (err) {
     next(err);
   }
@@ -92,6 +93,15 @@ exports.deleteAd = async (req, res, next) => {
     await Ad.deleteOne({ _id: id });
 
     res.json({ msg: 'item succesfully deleted' });
+  } catch (err) {
+    next(err);
+  }
+};
+
+exports.getTags = (req, res, next) => {
+  try {
+    const enumTags = Ad.schema.path('tags').caster.enumValues;
+    res.render('showTags', { enumTags });
   } catch (err) {
     next(err);
   }
