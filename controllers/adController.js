@@ -41,8 +41,8 @@ exports.getAds = async (req, res, next) => {
     }
 
     if (filterByPrice) {
-      // Case price contains '-' and only one ocurrence of '-'
-      if (filterByPrice.indexOf('-') >= 0 && filterByPrice.split('-').length <= 2) {
+      // Case price contains '-' (only one ocurrence)
+      if (filterByPrice.indexOf('-') !== -1 && filterByPrice.split('-').length <= 2) {
         if (filterByPrice[0] === '-') {
           // Case '-' is the first character, price < param
           const priceLt = filterByPrice.slice(1);
@@ -64,7 +64,7 @@ exports.getAds = async (req, res, next) => {
     }
 
     const ads = await Ad.list(filter, skip, limit, sort, fields);
-    // console.log({ result: ads });
+    console.log({ result: ads });
     res.render('result', { ads });
   } catch (err) {
     next(err);

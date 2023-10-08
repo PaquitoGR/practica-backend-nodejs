@@ -9,7 +9,7 @@ router.get('/', adController.getAds);
 router.get('/:id', adController.getAdById);
 
 // PUT /apiv1/ads/(_id) Update ad
-router.put('/:id', adController.updateAd);
+router.patch('/:id', adController.updateAd);
 
 // POST /apiv1/ads create ad
 router.post('/', adController.createAd);

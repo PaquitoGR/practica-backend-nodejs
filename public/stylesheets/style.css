@@ -1,8 +1,8 @@
 body {
-  background-color: rgb(50, 50, 50);
+  background-color: rgb(255, 255, 255);
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  color: #00B7FF;
+  color: #3e555e;
   line-height: 1.5;
   
 }
@@ -11,22 +11,9 @@ a {
   color: #00B7FF;
 }
 
-table {
-  width: 100%;
-  text-align: center;
-}
 
 div {
   margin: 20px;
-}
-
-.thumbnail {
-  width: 150px;
-  
-}
-.thumbnail-big {
-  width: 300px;
-  
 }
 
 input::-webkit-outer-spin-button,
@@ -34,3 +21,33 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+.thumbnail {
+  max-width: 100px;
+  max-height: 100px;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+/* td.ad-type {
+  font-weight: bold;
+  color: #007bff;
+} 
+*/
