@@ -1,33 +1,35 @@
 const Ad = require('../models/Ad');
+// const { validationResult } = require('express-validator');
 
-exports.getAllAds = async (req, res, next) => {
+exports.getAds = async (req, res, next) => {
   try {
     // filter by name
-    // http://127.0.0.1:3000/api/ads?name=book
+    // http://127.0.0.1:3000/apiv1/ads?name=book
     const filterByName = req.query.name;
+
     // filter by ad type: true = sale, false = search
-    // http://127.0.0.1:3000/api/ads?sale=true
+    // http://127.0.0.1:3000/apiv1/ads?sale=true
     const filterByAdType = req.query.sale;
     // filter by tags
-    // http://127.0.0.1:3000/api/ads?tags=lifestyle
+    // http://127.0.0.1:3000/apiv1/ads?tags=lifestyle
     const filterByTags = req.query.tags;
     // filter by price
     const filterByPrice = req.query.price;
     // pagination
-    // http://127.0.0.1:3000/api/ads?skip=2&limit=3
+    // http://127.0.0.1:3000/apiv1/ads?skip=2&limit=3
     const skip = req.query.skip;
     const limit = req.query.limit;
     // sort
-    // http://127.0.0.1:3000/api/ads?sort=-name (- for descent)
+    // http://127.0.0.1:3000/apiv1/ads?sort=-name (- for descent)
     const sort = req.query.sort;
     // fields
-    // http://127.0.0.1:3000/api/ads?fields=name -_id (- for descent)
+    // http://127.0.0.1:3000/apiv1/ads?fields=name -_id (- for descent)
     const fields = req.query.fields;
 
     const filter = {};
 
     if (filterByName) {
-      filter.name = filterByName;
+      filter.name = new RegExp('^' + req.query.name, 'i');
     };
 
     if (filterByAdType) {
@@ -39,10 +41,30 @@ exports.getAllAds = async (req, res, next) => {
     }
 
     if (filterByPrice) {
-      filter.price = filterByPrice;
+      // Case price contains '-' and only one ocurrence of '-'
+      if (filterByPrice.indexOf('-') >= 0 && filterByPrice.split('-').length <= 2) {
+        if (filterByPrice[0] === '-') {
+          // Case '-' is the first character, price < param
+          const priceLt = filterByPrice.slice(1);
+          filter.price = { $lte: priceLt };
+        } else if (filterByPrice[filterByPrice.length - 1] === '-') {
+          // Case '-' is the last character, price > param
+          const priceGt = filterByPrice.slice(0, -1);
+          filter.price = { $gte: priceGt };
+        } else {
+          // Case '-' is between two numbers
+          const priceGt = filterByPrice.slice(0, filterByPrice.indexOf('-'));
+          const priceLt = filterByPrice.slice(filterByPrice.indexOf('-') + 1);
+          // If the first number is greater, order is reversed:
+          filter.price = (priceLt > priceGt) ? { $gte: priceGt, $lte: priceLt } : { $gte: priceLt, $lte: priceGt };
+        }
+      } else {
+        filter.price = filterByPrice;
+      }
     }
 
     const ads = await Ad.list(filter, skip, limit, sort, fields);
+    // console.log({ result: ads });
     res.render('result', { ads });
   } catch (err) {
     next(err);
@@ -102,6 +124,7 @@ exports.getTags = (req, res, next) => {
   try {
     const enumTags = Ad.schema.path('tags').caster.enumValues;
     res.render('showTags', { enumTags });
+    console.log(enumTags);
   } catch (err) {
     next(err);
   }

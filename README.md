@@ -45,7 +45,7 @@ $ node init-db.js
 #### Get all items
 
 ```http
-GET /api/ads
+GET /apiv1/ads
 ```
 
 ```json
@@ -65,8 +65,20 @@ GET /api/ads
 }
 ```
 
-#### Images
+#### Get a item by _id
 
 ```http
-GET api/images/fileName
+GET apiv1/ads/(id)
+```
+
+#### Get a Image from the images folder
+
+```http
+GET apiv1/images/(fileName)
+```
+
+#### Show possible Tags
+
+```http
+GET apiv1/tags
 ```

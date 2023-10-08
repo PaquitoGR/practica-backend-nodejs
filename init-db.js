@@ -45,3 +45,4 @@ async function initAds () {
   const inserted = await Ad.insertMany(initData.ads);
   console.log(`${inserted.length} ads created.`);
 };
+

@@ -24,6 +24,10 @@ div {
   width: 150px;
   
 }
+.thumbnail-big {
+  width: 300px;
+  
+}
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {

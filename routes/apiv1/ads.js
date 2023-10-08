@@ -2,19 +2,19 @@ const express = require('express');
 const router = express.Router();
 const adController = require('../../controllers/adController');
 
-// GET /api/ads search all ads with filters
-router.get('/', adController.getAllAds);
+// GET /apiv1/ads search all ads with filters
+router.get('/', adController.getAds);
 
-// GET /api/ads/(_id) search by id
+// GET /apiv1/ads/(_id) search by id
 router.get('/:id', adController.getAdById);
 
-// PUT /api/ads/(_id) Update ad
+// PUT /apiv1/ads/(_id) Update ad
 router.put('/:id', adController.updateAd);
 
-// POST /api/ads create ad
+// POST /apiv1/ads create ad
 router.post('/', adController.createAd);
 
-// DELETE /api/ads(_id) delete an ad
+// DELETE /apiv1/ads/(_id) delete an ad
 router.delete('/:id', adController.deleteAd);
 
 module.exports = router;
