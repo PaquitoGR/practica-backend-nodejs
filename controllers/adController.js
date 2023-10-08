@@ -63,8 +63,12 @@ exports.getAds = async (req, res, next) => {
     }
 
     const ads = await Ad.list(filter, start, limit, sort, fields);
-    console.log({ ads });
-    res.render('result', { ads });
+    if (req._parsedOriginalUrl.path.includes('/apiv1')) {
+      res.json({ results: ads });
+    } else {
+      res.render('result', { ads });
+    }
+    // res.render('result', { ads });
   } catch (err) {
     next(err);
   }
@@ -74,8 +78,11 @@ exports.getAdById = async (req, res, next) => {
   try {
     const id = req.params.id;
     const ad = await Ad.findById(id);
-    res.render('resultSingle', { ad });
-    console.log({ ad });
+    if (req._parsedOriginalUrl.path.includes('/apiv1')) {
+      res.json({ result: ad });
+    } else {
+      res.render('resultSingle', { ad });
+    }
   } catch (err) {
     next(err);
   }
@@ -84,10 +91,9 @@ exports.getAdById = async (req, res, next) => {
 exports.updateAd = async (req, res, next) => {
   try {
     const id = req.params.id;
-    // const ad = await Ad.findById(id);
     const data = req.body;
     const updateAd = await Ad.findByIdAndUpdate(id, data, { new: true }); // new true: returns updated ad
-    res.json({ results: updateAd });
+    res.json({ result: updateAd });
   } catch (err) {
     next(err);
   }
@@ -122,8 +128,11 @@ exports.deleteAd = async (req, res, next) => {
 exports.getTags = (req, res, next) => {
   try {
     const enumTags = Ad.schema.path('tags').caster.enumValues;
-    res.render('showTags', { enumTags });
-    console.log(enumTags);
+    if (req._parsedOriginalUrl.path.includes('/apiv1')) {
+      res.json({ tags: enumTags });
+    } else {
+      res.render('showTags', { enumTags });
+    }
   } catch (err) {
     next(err);
   }

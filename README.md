@@ -61,7 +61,7 @@ $ node init-db.js
 ## DB collection model
 collection 'ads':
 
-```json
+```js
 {
   name: { type: String, maxlenght: 20, index: true, required: true },
   sale: { type: Boolean, default: true },
@@ -77,15 +77,14 @@ collection 'ads':
 ```http
 GET /apiv1/ads
 ```
-Displays a table with all the records from the database in an HTML view and the same information in JSON format in the console.
-
+Returns all the records from the database.
 
 #### Get a item by _id
 
 ```http
 GET /apiv1/ads/(_id)
 ```
-Displays a view of the item with provided ID.
+Returns the item with provided ID.
 
 #### Get an image from the images folder
 
@@ -98,8 +97,7 @@ Displays the file image if it exists in the server images folder.
 ```http
 PATCH /apiv1/ads/(_id)
 ```
-Adding the updated fields to the PUT request.
-Returns the updated ad in an HTML view, and the same information in JSON format in the console.
+Updates the item with the provided ID.
 
 #### Delete an ad
 ```http
@@ -111,14 +109,13 @@ Deletes the item with the provided ID from de database.
 ```http
 POST /apiv1/ads
 ```
-Adding name, price, ad type and tags for the new item in the POST request.
-Returns the new ad in JSON format.
+Creates a new ad.
 #### Show possible Tags
 
 ```http
 GET /apiv1/tags
 ```
-Displays all the possible tags of the model "tags" field.
+Returns a object with a list of all the possible tags.
 
 ## Examples
 Fields in this collection: 
@@ -133,17 +130,17 @@ Search items with filters.
 ```http
 GET /apiv1/ads?name=boo
 ```
-This will display all the items with name starting with "boo".
+This will return all the items with name starting with "boo".
 
 You can use some filters in your URL query:
 ```http
 GET /apiv1/ads?price=-1000
 ```
-This will show ads with price less than or equal to 1000. You can also type 100- for prices greater than or equal 100.
+This will return ads with price less than or equal to 1000. You can also type 100- for prices greater than or equal 100.
 ```http
 GET /apiv1/ads?price=100-500
 ```
-This will display ads with prices between 100 and 500.
+This will return ads with prices between 100 and 500.
 
 You can also add some filters as:
 - **start**=number to skip a specific number of items at the beginning of the query results. Useful for pagination.

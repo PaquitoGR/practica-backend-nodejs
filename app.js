@@ -19,16 +19,23 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+const adsRouter = require('./routes/apiv1/ads');
+const tagsRouter = require('./routes/apiv1/tags');
+
 // image file server GET /images/ads/filename
 app.use('/images/ads', express.static(path.join(__dirname, './public/images/ads')));
 
 // API routes
-app.use('/apiv1/ads', require('./routes/apiv1/ads'));
-// GET possible tags
-app.use('/apiv1/tags', require('./routes/apiv1/tags'));
+app.use('/apiv1/ads', adsRouter);
+// Website routes
+app.use('/', adsRouter);
+
+// possible tags
+app.use('/tags', tagsRouter);
+app.use('/apiv1/tags', tagsRouter);
 
 // Website routes
-app.use('/', require('./routes/index'));
+// app.use('/', require('./routes/index'));
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
