@@ -9,6 +9,7 @@ Node.js + Express API and MongoDB database for a web application specialized in 
 - [Requirements](#requirements)
 - [Installation](#Installation)
 - [Start](#Start)
+- [DB Model](#db-collection-model)
 - [API Endpoints](#Endpoints)
 - [Examples](#examples)
 
@@ -57,6 +58,18 @@ Reset to initial DB
 $ node init-db.js
 ```
 
+## DB collection model
+collection 'ads':
+
+```json
+{
+  name: { type: String, maxlenght: 20, index: true, required: true },
+  sale: { type: Boolean, default: true },
+  price: { type: Number, index: true, min: 0, max: 1000000, required: true },
+  img: { type: String, default: 'Picture not defined' },
+  tags: { type: [String], enum: ['work', 'lifestyle', 'motor', 'mobile'] }
+}
+```
 ## Endpoints
 
 #### Get all items
@@ -108,6 +121,13 @@ GET /apiv1/tags
 Displays all the possible tags of the model "tags" field.
 
 ## Examples
+Fields in this collection: 
+- name: string
+- price: number
+- sale: boolean
+- tags: array of strings
+- img: string (file path)
+
 Search items with filters.
 
 ```http
