@@ -128,11 +128,7 @@ exports.deleteAd = async (req, res, next) => {
 exports.getTags = (req, res, next) => {
   try {
     const enumTags = Ad.schema.path('tags').caster.enumValues;
-    if (req._parsedOriginalUrl.path.includes('/apiv1')) {
-      res.json({ tags: enumTags });
-    } else {
-      res.render('showTags', { enumTags });
-    }
+    res.json({ tags: enumTags });
   } catch (err) {
     next(err);
   }

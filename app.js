@@ -27,12 +27,10 @@ app.use('/images/ads', express.static(path.join(__dirname, './public/images/ads'
 
 // API routes
 app.use('/apiv1/ads', adsRouter);
+// possible tags
+app.use('/apiv1/tags', tagsRouter);
 // Website routes
 app.use('/', adsRouter);
-
-// possible tags
-app.use('/tags', tagsRouter);
-app.use('/apiv1/tags', tagsRouter);
 
 // Website routes
 // app.use('/', require('./routes/index'));
