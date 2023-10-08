@@ -118,6 +118,8 @@ GET /apiv1/tags
 Returns a object with a list of all the possible tags.
 
 ## Examples
+**You can access the data in JSON format via route /apiv1/ads, or in HTML view format via url root ``(localhost/)``.
+**
 Fields in this collection: 
 - name: string
 - price: number
