@@ -18,7 +18,7 @@ function deleteQuestion (text) {
       resolve(answer.toLowerCase() === 'y');
     });
   });
-}
+};
 
 async function main () {
   await new Promise(resolve => connection.once('open', resolve));
@@ -34,7 +34,7 @@ async function main () {
 
   await initAds();
   connection.close();
-}
+};
 
 async function initAds () {
   // delete all items in collection Ads
@@ -45,4 +45,3 @@ async function initAds () {
   const inserted = await Ad.insertMany(initData.ads);
   console.log(`${inserted.length} ads created.`);
 };
-

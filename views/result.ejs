@@ -22,9 +22,9 @@
         <tr>
           <td><%= ad.name %></td>
           <td><%= ad.price %></td>              
-          <%if (ad.sale) { %>
+          <%if (ad.sale === true) { %>
             <td>sale</td>
-          <% } else { %>
+          <% } else if (ad.sale === false) { %>
             <td>purchase</td>
           <% } %>
           </td>

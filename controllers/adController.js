@@ -1,5 +1,4 @@
 const Ad = require('../models/Ad');
-// const { validationResult } = require('express-validator');
 
 exports.getAds = async (req, res, next) => {
   try {
@@ -17,7 +16,7 @@ exports.getAds = async (req, res, next) => {
     const filterByPrice = req.query.price;
     // pagination
     // http://127.0.0.1:3000/apiv1/ads?skip=2&limit=3
-    const skip = req.query.skip;
+    const start = req.query.start;
     const limit = req.query.limit;
     // sort
     // http://127.0.0.1:3000/apiv1/ads?sort=-name (- for descent)
@@ -63,8 +62,8 @@ exports.getAds = async (req, res, next) => {
       }
     }
 
-    const ads = await Ad.list(filter, skip, limit, sort, fields);
-    console.log({ result: ads });
+    const ads = await Ad.list(filter, start, limit, sort, fields);
+    console.log({ ads });
     res.render('result', { ads });
   } catch (err) {
     next(err);
