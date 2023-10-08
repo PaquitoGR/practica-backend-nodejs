@@ -35,7 +35,7 @@ $ ./bin/mongod --dbpath ./data
 ```
 
 Review database connection on /lib/connectMongoose.js
-(by default, 'mongodb://127.0.0.1/keepopDB')
+(by default, ``mongodb://127.0.0.1/keepopDB``)
 
 ## Start
 
@@ -51,8 +51,7 @@ In development:
 $ npm run dev
 ```
 
-Reset to initial DB
-(This will erase all previous data)
+Reset database to its initial state (This will delete existing data).
 
 ```sh
 $ node init-db.js
@@ -118,8 +117,7 @@ GET /apiv1/tags
 Returns an object with a list of all the possible tags.
 
 ## Examples
-**You can access the data in JSON format via route /apiv1/ads, or in HTML view format via url root ``(localhost/)``.
-**
+**You can access the data in JSON format via route ``/apiv1/ads``, or in HTML view format via url root ``localhost/``.**
 Fields in this collection: 
 - name: string
 - price: number
